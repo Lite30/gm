@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/green-museum/static/css/main.74a33aa5.css",
+    "main.js": "/green-museum/static/js/main.b3693b26.js",
+    "index.html": "/green-museum/index.html",
+    "main.74a33aa5.css.map": "/green-museum/static/css/main.74a33aa5.css.map",
+    "main.b3693b26.js.map": "/green-museum/static/js/main.b3693b26.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.74a33aa5.css",
+    "static/js/main.b3693b26.js"
+  ]
+}
