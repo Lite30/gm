@@ -30,7 +30,7 @@ export default function GreenMuseum() {
       title: "Grans", 
       category: "Liteboho Maseli", 
       image: grannyImage,
-      description: "Celebrating the beauty of marine life while highlighting the fragility of our oceans in the face of climate change."
+      description: "Beauty of GRANS blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah, i dont know what to say"
     },
     { 
       id: 2, 
@@ -44,7 +44,7 @@ export default function GreenMuseum() {
       title: "Skulpture", 
       category: "Liteboho Maseli", 
       image: firstSightImage,
-      description: "A rare desert flower captured in bloom, symbolizing resilience and the unexpected beauty of arid ecosystems."
+      description: "MEAN FACE.MEAN FACEMEAN FACE.MEAN FACEMEAN FACE.MEAN FACEMEAN FACE.MEAN FACEMEAN FACE.MEAN FACEMEAN FACE.MEAN FACEMEAN FACE.MEAN FACEMEAN FACE.MEAN FACEMEAN FACE.MEAN FACE"
     },
     { 
       id: 4, 
