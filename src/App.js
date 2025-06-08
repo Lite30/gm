@@ -1,6 +1,11 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 
+import grannyImage from './images/granny.png';
+import lImage from './images/l.png';
+import firstSightImage from './images/first sight.png';
+
+
 export default function GreenMuseum() {
   const [currentImage, setCurrentImage] = useState(0);
   const [isGrowing, setIsGrowing] = useState(false);
@@ -13,21 +18,21 @@ export default function GreenMuseum() {
       id: 1, 
       title: "Ocean Memories", 
       category: "Marine", 
-      image: "granny.png",
+      image: grannyImage,
       description: "Celebrating the beauty of marine life while highlighting the fragility of our oceans in the face of climate change."
     },
     { 
       id: 2, 
       title: "Mountain Soul", 
       category: "Landscape", 
-      image: "l.png",
+      image: lImage,
       description: "Majestic peaks rendered with sustainable digital techniques, reminding us of nature's enduring power and beauty."
     },
     { 
       id: 3, 
       title: "Desert Bloom", 
       category: "Botanical", 
-      image: "first sight.png",
+      image: firstSightImage,
       description: "A rare desert flower captured in bloom, symbolizing resilience and the unexpected beauty of arid ecosystems."
     },
   ];
@@ -85,7 +90,7 @@ export default function GreenMuseum() {
             <section className="organic-gallery">
               <div className={`gallery-container ${isGrowing ? 'growing' : ''}`}>
                 <img 
-                  src={`images/${artwork[currentImage].image}`} 
+                  src={artwork[currentImage].image} 
                   alt={artwork[currentImage].title}
                   loading="lazy"
                   className="organic-image"
@@ -117,7 +122,7 @@ export default function GreenMuseum() {
                 >
                   <div className="card-overlay"></div>
                   <img
-                    src={`images/${art.image}`}
+                    src={art.image}
                     alt={art.title}
                     loading="lazy"
                   />

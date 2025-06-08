@@ -176,7 +176,14 @@ body {
   border-left: 3px solid var(--leaf-green);
   border-radius: 0 8px 8px 0;
 }
-
+main {
+  flex: 1;
+}
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
 /* Art Grid */
 .art-grid {
   display: grid;
