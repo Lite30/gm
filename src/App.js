@@ -4,26 +4,51 @@ import './App.css';
 export default function GreenMuseum() {
   const [currentImage, setCurrentImage] = useState(0);
   const [isGrowing, setIsGrowing] = useState(false);
+  const [activeSection, setActiveSection] = useState('gallery');
 
   // Your eco-themed artwork
   const artwork = [
-    { id: 1, title: "Forest Whispers", category: "Nature", image: "forest.jpg" },
-    { id: 2, title: "Ocean Memories", category: "Marine", image: "granny.png" },
-    { id: 3, title: "Mountain Soul", category: "Landscape", image: "l.png" },
-    { id: 4, title: "Desert Bloom", category: "Botanical", image: "first sight.png" },
+    
+    { 
+      id: 1, 
+      title: "Ocean Memories", 
+      category: "Marine", 
+      image: "granny.png",
+      description: "Celebrating the beauty of marine life while highlighting the fragility of our oceans in the face of climate change."
+    },
+    { 
+      id: 2, 
+      title: "Mountain Soul", 
+      category: "Landscape", 
+      image: "l.png",
+      description: "Majestic peaks rendered with sustainable digital techniques, reminding us of nature's enduring power and beauty."
+    },
+    { 
+      id: 3, 
+      title: "Desert Bloom", 
+      category: "Botanical", 
+      image: "first sight.png",
+      description: "A rare desert flower captured in bloom, symbolizing resilience and the unexpected beauty of arid ecosystems."
+    },
   ];
 
   // Organic gallery rotation
   useEffect(() => {
-    const interval = setInterval(() => {
-      setIsGrowing(true);
-      setTimeout(() => {
-        setCurrentImage((prev) => (prev + 1) % artwork.length);
-        setIsGrowing(false);
-      }, 500);
-    }, 6000);
-    return () => clearInterval(interval);
-  }, [artwork.length]);
+    if (activeSection === 'gallery') {
+      const interval = setInterval(() => {
+        setIsGrowing(true);
+        setTimeout(() => {
+          setCurrentImage((prev) => (prev + 1) % artwork.length);
+          setIsGrowing(false);
+        }, 500);
+      }, 6000);
+      return () => clearInterval(interval);
+    }
+  }, [artwork.length, activeSection]);
+
+    const handleNavClick = (section) => {
+    setActiveSection(section);
+  };
 
   return (
     <div className="green-museum">
@@ -33,65 +58,139 @@ export default function GreenMuseum() {
           <h1>Green Museum</h1>
         </div>
         <nav>
-          <button className="nav-link">Gallery</button>
-          <button className="nav-link">About</button>
-          <button className="nav-link">Eco-Statement</button>
+          <button 
+            className={`nav-link ${activeSection === 'gallery' ? 'active' : ''}`}
+            onClick={() => handleNavClick('gallery')}
+          >
+            Gallery
+          </button>
+          <button 
+            className={`nav-link ${activeSection === 'about' ? 'active' : ''}`}
+            onClick={() => handleNavClick('about')}
+          >
+            About
+          </button>
+          <button 
+            className={`nav-link ${activeSection === 'contact' ? 'active' : ''}`}
+            onClick={() => handleNavClick('contact')}
+          >
+            Contact
+          </button>
         </nav>
       </header>
 
       <main>
-        <section className="organic-gallery">
-          <div className={`gallery-container ${isGrowing ? 'growing' : ''}`}>
-            <img 
-              src={`/images/${artwork[currentImage].image}`} 
-              alt={artwork[currentImage].title}
-              loading="lazy"
-              className="organic-image"
-            />
-            <div className="vine-animation"></div>
-          </div>
-          <div className="gallery-info">
-            <h2 className="art-title">{artwork[currentImage].title}</h2>
-            <p className="art-category">{artwork[currentImage].category}</p>
-            <div className="eco-badge">
-              <RecycleIcon />
-              <span>Sustainably Created</span>
-            </div>
-          </div>
-        </section>
+        {activeSection === 'gallery' && (
+          <>
+            <section className="organic-gallery">
+              <div className={`gallery-container ${isGrowing ? 'growing' : ''}`}>
+                <img 
+                  src={`/images/${artwork[currentImage].image}`} 
+                  alt={artwork[currentImage].title}
+                  loading="lazy"
+                  className="organic-image"
+                />
+                <div className="vine-animation"></div>
+              </div>
+              <div className="gallery-info">
+                <h2 className="art-title">{artwork[currentImage].title}</h2>
+                <p className="art-category">{artwork[currentImage].category}</p>
+                <div className="eco-badge">
+                  <RecycleIcon />
+                  <span>Sustainably Created</span>
+                </div>
+                <p className="art-description">{artwork[currentImage].description}</p>
+              </div>
+            </section>
+            <section className="art-grid">
+              {artwork.map((art, index) => (
+                <div 
+                  key={art.id} 
+                  className={`art-card ${index === currentImage ? 'active' : ''}`}
+                  onClick={() => {
+                    setIsGrowing(true);
+                    setTimeout(() => {
+                      setCurrentImage(index);
+                      setIsGrowing(false);
+                    }, 300);
+                  }}
+                >
+                  <div className="card-overlay"></div>
+                  <img
+                    src={`/images/${art.image}`}
+                    alt={art.title}
+                    loading="lazy"
+                  />
+                  <div className="card-info">
+                    <h3>{art.title}</h3>
+                    <p>{art.category}</p>
+                  </div>
+                </div>
+              ))}
+            </section>
+          </>
+        )}
 
-        <section className="art-grid">
-          {artwork.map((art, index) => (
-            <div 
-              key={art.id} 
-              className={`art-card ${index === currentImage ? 'active' : ''}`}
-              onClick={() => {
-                setIsGrowing(true);
-                setTimeout(() => {
-                  setCurrentImage(index);
-                  setIsGrowing(false);
-                }, 300);
-              }}
-            >
-              <div className="card-overlay"></div>
-              <img
-                src={`/images/${art.image}`}
-                alt={art.title}
-                loading="lazy"
-              />
-              <div className="card-info">
-                <h3>{art.title}</h3>
-                <p>{art.category}</p>
+        {activeSection === 'about' && (
+  <section className="about-section">
+    <div className="about-content">
+      <h2>
+        Green Museum currently will add people's art and showcase it for them. 
+        It is a museum that is interested in showcasing art and all that. 
+        Add this story for me, blah blah blah, we hope to be awesome and last long.
+      </h2>
+    </div>
+  </section>
+)}
+
+        {activeSection === 'contact' && (
+          <section className="contact-section">
+            <div className="contact-content">
+              <h2>Get in Touch</h2>
+              <div className="contact-grid">
+                <div className="contact-info">
+                  <h3>Contact Information</h3>
+                  <p>📧 info@greenmuseum.art</p>
+                  <p>📞 +1 (555) 123-4567</p>
+                </div>
+                <form className="contact-form">
+                  <div className="form-group">
+                    <label htmlFor="name">Name</label>
+                    <input type="text" id="name" placeholder="Your name" />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="email">Email</label>
+                    <input type="email" id="email" placeholder="Your email" />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="message">Message</label>
+                    <textarea id="message" rows="5" placeholder="Your eco-thoughts"></textarea>
+                  </div>
+                  <button type="submit" className="eco-button">
+                    <RecycleIcon /> Send Message
+                  </button>
+                </form>
               </div>
             </div>
-          ))}
-        </section>
+          </section>
+        )}
       </main>
 
       <footer className="eco-footer">
-        <p>🌎 Committed to sustainable digital art presentation</p>
-        <p>© {new Date().getFullYear()} Green Museum - Carbon Neutral Hosting</p>
+        <p>© {new Date().getFullYear()} Green Museum</p>
+        <p>
+          Created by{' '}
+          <a
+            href="https://github.com/lite30"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: 'white', textDecoration: 'underline' }}
+          >
+            Liteboho Maseli
+          </a>
+        </p>
       </footer>
+
     </div>
   );
 }
