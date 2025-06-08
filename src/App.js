@@ -85,7 +85,7 @@ export default function GreenMuseum() {
             <section className="organic-gallery">
               <div className={`gallery-container ${isGrowing ? 'growing' : ''}`}>
                 <img 
-                  src={`/images/${artwork[currentImage].image}`} 
+                  src={`images/${artwork[currentImage].image}`} 
                   alt={artwork[currentImage].title}
                   loading="lazy"
                   className="organic-image"
@@ -117,7 +117,7 @@ export default function GreenMuseum() {
                 >
                   <div className="card-overlay"></div>
                   <img
-                    src={`/images/${art.image}`}
+                    src={`images/${art.image}`}
                     alt={art.title}
                     loading="lazy"
                   />
