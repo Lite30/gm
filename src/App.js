@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect , useRef} from 'react';
 import './App.css';
 
 import grannyImage from './images/granny.png';
@@ -10,6 +10,7 @@ export default function GreenMuseum() {
   const [currentImage, setCurrentImage] = useState(0);
   const [isGrowing, setIsGrowing] = useState(false);
   const [activeSection, setActiveSection] = useState('gallery');
+  const galleryRef = useRef(null); // Ref for scrolling to gallery
 
   // Your eco-themed artwork
   const artwork = [
@@ -54,6 +55,27 @@ export default function GreenMuseum() {
     const handleNavClick = (section) => {
     setActiveSection(section);
   };
+  // Handle art card click: set image and scroll to gallery
+  const handleArtCardClick = (index) => {
+    setIsGrowing(true);
+    setTimeout(() => {
+      setCurrentImage(index);
+      setIsGrowing(false);
+      
+      // Switch to gallery if not already there
+      if (activeSection !== 'gallery') {
+        setActiveSection('gallery');
+      }
+      
+      // Scroll to gallery with smooth animation
+      setTimeout(() => {
+        galleryRef.current?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }, 100);
+    }, 300);
+  };
 
   return (
     <div className="green-museum">
@@ -87,14 +109,16 @@ export default function GreenMuseum() {
       <main>
         {activeSection === 'gallery' && (
           <>
-            <section className="organic-gallery">
+            <section className="organic-gallery" ref={galleryRef}>
               <div className={`gallery-container ${isGrowing ? 'growing' : ''}`}>
-                <img 
-                  src={artwork[currentImage].image} 
-                  alt={artwork[currentImage].title}
-                  loading="lazy"
-                  className="organic-image"
-                />
+                <div className="image-wrapper">
+                  <img 
+                    src={artwork[currentImage].image} 
+                    alt={artwork[currentImage].title}
+                    loading="lazy"
+                    className="organic-image"
+                  />
+                </div>
                 <div className="vine-animation"></div>
               </div>
               <div className="gallery-info">
@@ -112,13 +136,7 @@ export default function GreenMuseum() {
                 <div 
                   key={art.id} 
                   className={`art-card ${index === currentImage ? 'active' : ''}`}
-                  onClick={() => {
-                    setIsGrowing(true);
-                    setTimeout(() => {
-                      setCurrentImage(index);
-                      setIsGrowing(false);
-                    }, 300);
-                  }}
+                  onClick={() => handleArtCardClick(index)}
                 >
                   <div className="card-overlay"></div>
                   <img
