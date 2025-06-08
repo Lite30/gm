@@ -12,27 +12,29 @@ export default function GreenMuseum() {
   const [activeSection, setActiveSection] = useState('gallery');
   const galleryRef = useRef(null); // Ref for scrolling to gallery
 
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   // Your eco-themed artwork
   const artwork = [
     
     { 
       id: 1, 
-      title: "Ocean Memories", 
-      category: "Marine", 
+      title: "Grans", 
+      category: "Liteboho Maseli", 
       image: grannyImage,
       description: "Celebrating the beauty of marine life while highlighting the fragility of our oceans in the face of climate change."
     },
     { 
       id: 2, 
-      title: "Mountain Soul", 
-      category: "Landscape", 
+      title: "Skeleton Soul", 
+      category: "Liteboho Maseli", 
       image: lImage,
       description: "Majestic peaks rendered with sustainable digital techniques, reminding us of nature's enduring power and beauty."
     },
     { 
       id: 3, 
-      title: "Desert Bloom", 
-      category: "Botanical", 
+      title: "Skulpture", 
+      category: "Liteboho Maseli", 
       image: firstSightImage,
       description: "A rare desert flower captured in bloom, symbolizing resilience and the unexpected beauty of arid ecosystems."
     },
@@ -54,6 +56,7 @@ export default function GreenMuseum() {
 
     const handleNavClick = (section) => {
     setActiveSection(section);
+    setIsMobileMenuOpen(false); // Close mobile menu when navigating
   };
   // Handle art card click: set image and scroll to gallery
   const handleArtCardClick = (index) => {
@@ -84,7 +87,16 @@ export default function GreenMuseum() {
           <LeafIcon />
           <h1>Green Museum</h1>
         </div>
-        <nav>
+        {/* Mobile menu toggle button */}
+        <button 
+          className="mobile-menu-toggle" 
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+        >
+          {isMobileMenuOpen ? <CloseIcon /> : <HamburgerIcon />}
+        </button>
+
+        <nav className={`${isMobileMenuOpen ? 'open' : ''}`}>
           <button 
             className={`nav-link ${activeSection === 'gallery' ? 'active' : ''}`}
             onClick={() => handleNavClick('gallery')}
@@ -124,10 +136,6 @@ export default function GreenMuseum() {
               <div className="gallery-info">
                 <h2 className="art-title">{artwork[currentImage].title}</h2>
                 <p className="art-category">{artwork[currentImage].category}</p>
-                <div className="eco-badge">
-                  <RecycleIcon />
-                  <span>Sustainably Created</span>
-                </div>
                 <p className="art-description">{artwork[currentImage].description}</p>
               </div>
             </section>
@@ -231,6 +239,21 @@ function RecycleIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24">
       <path d="M5 6h14l-1.6 4H6.6zm13 12c0 1.1-.9 2-2 2H8c-1.1 0-2-.9-2-2v-5h12zm2-14l-3-4H7L4 4H1v2h3l1.6 4h12.8L20 6h3V4z" fill="#8BC34A"/>
+    </svg>
+  );
+}
+function HamburgerIcon() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+  );
+}
+
+function CloseIcon() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
     </svg>
   );
 }

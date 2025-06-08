@@ -485,3 +485,152 @@ html, body, #root {
   transform: scale(0.95);
   transition: transform 0.5s ease-in-out;
 }
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--earth-green);
+  font-size: 1.8rem;
+  cursor: pointer;
+  z-index: 101;
+}
+
+/* Mobile-first navigation */
+@media (max-width: 768px) {
+  /* Header adjustments */
+  .museum-header {
+    flex-wrap: wrap;
+    padding: 1rem 5%;
+    position: relative;
+  }
+
+  .logo {
+    flex: 1;
+  }
+
+  .mobile-menu-toggle {
+    display: block;
+  }
+
+  nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    flex-direction: column;
+    align-items: center;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  nav.open {
+    max-height: 300px;
+  }
+
+  .nav-link {
+    margin: 0.5rem 0;
+    padding: 1rem;
+    width: 100%;
+    text-align: center;
+    font-size: 1.8rem;
+  }
+
+  .nav-link::after {
+    display: none;
+  }
+
+  /* Gallery section */
+  .organic-gallery {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .gallery-container {
+    height: 50vh;
+    min-height: 300px;
+  }
+
+  .gallery-info {
+    padding: 1.5rem 0 0 0;
+  }
+
+  .art-title {
+    font-size: 2.2rem;
+  }
+
+  .art-description {
+    font-size: 1.1rem;
+  }
+
+  /* Art grid */
+  .art-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .art-card {
+    aspect-ratio: 1/1.2;
+  }
+
+  /* Contact section */
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .contact-form .form-group {
+    margin-bottom: 1rem;
+  }
+
+  /* Footer adjustments */
+  .eco-footer {
+    padding: 1.5rem;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .logo h1 {
+    font-size: 1.5rem;
+  }
+
+  .gallery-container {
+    height: 40vh;
+    min-height: 250px;
+  }
+
+  .art-title {
+    font-size: 2rem;
+  }
+
+  .art-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .about-content h2 {
+    font-size: 1.8rem;
+  }
+
+  .contact-content h2 {
+    font-size: 2rem;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 360px) {
+  .art-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .art-title {
+    font-size: 1.8rem;
+  }
+  
+  .art-description {
+    font-size: 1rem;
+  }
+}
