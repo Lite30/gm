@@ -1,16 +1,27 @@
 {
   "files": {
-    "main.css": "./static/css/main.75671a02.css",
-    "main.js": "./static/js/main.68bafe26.js",
+    "main.css": "./static/css/main.fdcdaddb.css",
+    "main.js": "./static/js/main.397d3d65.js",
     "static/media/granny.png": "./static/media/granny.2c035c5445cb305a9ae1.png",
     "static/media/first sight.png": "./static/media/first sight.42dc5815ec1c680b5bf9.png",
+    "static/media/not authentic.png": "./static/media/not authentic.1bf8061eb8287a141a26.png",
     "static/media/l.png": "./static/media/l.1bfef6afbdde01dac921.png",
+    "static/media/new way.jpg": "./static/media/new way.bf39848c8e67ad88d9b9.jpg",
+    "static/media/piece1.jpg": "./static/media/piece1.0297a52cacba77159f87.jpg",
+    "static/media/Asset 1xxxhdpi.png": "./static/media/Asset 1xxxhdpi.3210863dd1bac2f051bb.png",
+    "static/media/Asset 1xxxhdpi.jpg": "./static/media/Asset 1xxxhdpi.c8b1ba6a13ad9f3c81e9.jpg",
+    "static/media/facey2.jpg": "./static/media/facey2.cb0a1b489649c6d59a34.jpg",
+    "static/media/THEARCHOFTIIME.jpg": "./static/media/THEARCHOFTIIME.ef70fcd0b1e0a6072a6e.jpg",
+    "static/media/FACEYRED.jpg": "./static/media/FACEYRED.5feb6b894a6c54962311.jpg",
+    "static/media/moonsat.jpg": "./static/media/moonsat.79159069e025d0a2dc76.jpg",
+    "static/media/grandpa.jpg": "./static/media/grandpa.15b620fcd354958880e7.jpg",
+    "static/media/WHOKNI.jpg": "./static/media/WHOKNI.d591399dbb29cdcd6451.jpg",
     "index.html": "./index.html",
-    "main.75671a02.css.map": "./static/css/main.75671a02.css.map",
-    "main.68bafe26.js.map": "./static/js/main.68bafe26.js.map"
+    "main.fdcdaddb.css.map": "./static/css/main.fdcdaddb.css.map",
+    "main.397d3d65.js.map": "./static/js/main.397d3d65.js.map"
   },
   "entrypoints": [
-    "static/css/main.75671a02.css",
-    "static/js/main.68bafe26.js"
+    "static/css/main.fdcdaddb.css",
+    "static/js/main.397d3d65.js"
   ]
 }
