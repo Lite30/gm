@@ -21,6 +21,7 @@ export default function GreenMuseum() {
   const galleryRef = useRef(null);
   const [showComingSoon, setShowComingSoon] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   // Your eco-themed artwork
   const artwork = [
@@ -124,6 +125,14 @@ export default function GreenMuseum() {
     }
   ];
 
+  const handleImageClick = (art) => {
+    setSelectedImage(art);
+  };
+
+  const closeModal = () => {
+    setSelectedImage(null);
+  };
+
   const handleNavClick = (section) => {
     setActiveSection(section);
     setIsMobileMenuOpen(false);
@@ -142,7 +151,6 @@ export default function GreenMuseum() {
     <div className="green-museum">
       <header className="museum-header">
         <div className="logo">
-          
           <h1>Green Museum</h1>
         </div>
         <button 
@@ -187,6 +195,8 @@ export default function GreenMuseum() {
                       alt={art.title}
                       loading="lazy"
                       className="organic-image"
+                      onClick={() => handleImageClick(art)}
+                      style={{ cursor: 'pointer' }}
                     />
                   </div>
                   <div className="vine-animation"></div>
@@ -263,6 +273,26 @@ export default function GreenMuseum() {
           </section>
         )}
       </main>
+
+      {/* Image Modal */}
+      {selectedImage && (
+        <div className="image-modal" onClick={closeModal}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close" onClick={closeModal}>
+              <CloseIcon />
+            </button>
+            <img 
+              src={selectedImage.image} 
+              alt={selectedImage.title}
+              className="modal-image"
+            />
+            <div className="modal-info">
+              <h3>{selectedImage.title}</h3>
+              <p>{selectedImage.category}</p>
+            </div>
+          </div>
+        </div>
+      )}
 
       <footer className="eco-footer">
         <p>© {new Date().getFullYear()} Green Museum</p>
