@@ -4,6 +4,17 @@ import './App.css';
 import grannyImage from './images/granny.png';
 import lImage from './images/l.png';
 import firstSightImage from './images/first sight.png';
+import asset1Jpg from './images/Asset 1xxxhdpi.jpg';
+import asset1Png from './images/Asset 1xxxhdpi.png';
+import facey2 from './images/facey2.jpg';
+import faceyRed from './images/FACEYRED.jpg';
+import grandpa from './images/grandpa.jpg';
+import moonsat from './images/moonsat.jpg';
+import newWay from './images/new way.jpg';
+import notAuthentic from './images/not authentic.png';
+import piece1 from './images/piece1.jpg';
+import theArchOfTime from './images/THEARCHOFTIIME.jpg';
+import whoKni from './images/WHOKNI.jpg';
 
 
 export default function GreenMuseum() {
@@ -11,6 +22,7 @@ export default function GreenMuseum() {
   const [isGrowing, setIsGrowing] = useState(false);
   const [activeSection, setActiveSection] = useState('gallery');
   const galleryRef = useRef(null); // Ref for scrolling to gallery
+  const [showComingSoon, setShowComingSoon] = useState(false);
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -38,6 +50,83 @@ export default function GreenMuseum() {
       image: firstSightImage,
       description: "A rare desert flower captured in bloom, symbolizing resilience and the unexpected beauty of arid ecosystems."
     },
+    { 
+      id: 4, 
+      title: "Asset 1", 
+      category: "Liteboho Maseli", 
+      image: asset1Jpg,
+      description: "An abstract representation of ecological balance using geometric patterns and vibrant colors."
+    },
+    { 
+      id: 5, 
+      title: "Asset 1 Variation", 
+      category: "Liteboho Maseli", 
+      image: asset1Png,
+      description: "Digital reinterpretation of natural forms exploring the relationship between technology and ecology."
+    },
+    { 
+      id: 6, 
+      title: "Facey", 
+      category: "Liteboho Maseli", 
+      image: facey2,
+      description: "Portrait study capturing human connection with nature through expressive brushwork."
+    },
+    { 
+      id: 7, 
+      title: "Red Portrait", 
+      category: "Liteboho Maseli", 
+      image: faceyRed,
+      description: "Bold chromatic exploration of identity and environmental consciousness."
+    },
+    { 
+      id: 8, 
+      title: "Grandpa", 
+      category: "Liteboho Maseli", 
+      image: grandpa,
+      description: "Intergenerational wisdom and the passing down of ecological stewardship traditions."
+    },
+    { 
+      id: 9, 
+      title: "Moon Satellite", 
+      category: "Liteboho Maseli", 
+      image: moonsat,
+      description: "Celestial exploration piece examining humanity's place in the cosmic ecosystem."
+    },
+    { 
+      id: 10, 
+      title: "New Way", 
+      category: "Liteboho Maseli", 
+      image: newWay,
+      description: "Visionary approach to sustainable living through innovative design principles."
+    },
+    { 
+      id: 11, 
+      title: "Authenticity", 
+      category: "Liteboho Maseli", 
+      image: notAuthentic,
+      description: "Critical examination of genuine versus artificial in contemporary environmental discourse."
+    },
+    { 
+      id: 12, 
+      title: "Fragment", 
+      category: "Liteboho Maseli", 
+      image: piece1,
+      description: "Deconstructed landscape highlighting the fragmentation of natural habitats."
+    },
+    { 
+      id: 13, 
+      title: "Arch of Time", 
+      category: "Liteboho Maseli", 
+      image: theArchOfTime,
+      description: "Geological time scales represented through monumental digital architecture."
+    },
+    { 
+      id: 14, 
+      title: "Unknown Connections", 
+      category: "Liteboho Maseli", 
+      image: whoKni,
+      description: "Exploration of invisible ecological networks that sustain life on Earth."
+    }
   ];
 
   // Organic gallery rotation
@@ -48,8 +137,8 @@ export default function GreenMuseum() {
         setTimeout(() => {
           setCurrentImage((prev) => (prev + 1) % artwork.length);
           setIsGrowing(false);
-        }, 500);
-      }, 6000);
+        }, 2000);
+      }, 20000);
       return () => clearInterval(interval);
     }
   }, [artwork.length, activeSection]);
@@ -78,6 +167,16 @@ export default function GreenMuseum() {
         });
       }, 100);
     }, 300);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setShowComingSoon(true);
+    
+    // Hide the message after 3 seconds
+    setTimeout(() => {
+      setShowComingSoon(false);
+    }, 3000);
   };
 
   return (
@@ -166,9 +265,17 @@ export default function GreenMuseum() {
   <section className="about-section">
     <div className="about-content">
       <h2>
-        Green Museum currently will add people's art and showcase it for them. 
-        It is a museum that is interested in showcasing art and all that. 
-        Add this story for me, blah blah blah, we hope to be awesome and last long.
+        We are Green Museum — a living canvas, a shared altar for modern expression.
+
+This is more than a gallery. It’s a space where soul meets form, where brushstrokes carry stories, and where light, color, and texture speak what words cannot. We gather the visions of many — artists from different paths, backgrounds, and rhythms — into one collective heartbeat of modern art.
+
+Here, we believe creation is sacred. Every piece is a portal. Every artist, a vessel. Whether it's bold, quiet, wild, or still — if it speaks truth, it belongs.
+
+We are here to hold space for that truth.
+To uplift. To connect. To remember beauty in all its raw, evolving shapes.
+
+Wander through. Feel what calls you.
+This is a place for seekers, for creators, for anyone listening with their eyes open.
       </h2>
     </div>
   </section>
@@ -178,30 +285,40 @@ export default function GreenMuseum() {
           <section className="contact-section">
             <div className="contact-content">
               <h2>Get in Touch</h2>
-              <div className="contact-grid">
-                <div className="contact-info">
-                  <h3>Contact Information</h3>
-                  <p>📧 info@greenmuseum.art</p>
-                  <p>📞 +1 (555) 123-4567</p>
+              {showComingSoon ? (
+                <div className="coming-soon-message">
+                  <div className="leaf-spinner">
+                    <LeafIcon />
+                  </div>
+                  <h3>Coming Soon!</h3>
+                  <p>We're working on our messaging system. Stay tuned!</p>
                 </div>
-                <form className="contact-form">
-                  <div className="form-group">
-                    <label htmlFor="name">Name</label>
-                    <input type="text" id="name" placeholder="Your name" />
+              ) : (
+                <div className="contact-grid">
+                  <div className="contact-info">
+                    <h3>Contact Information</h3>
+                    <p>📧 litebohomaseli3@gmail.com</p>
+                    <p>📞 +266 5855 9628</p>
                   </div>
-                  <div className="form-group">
-                    <label htmlFor="email">Email</label>
-                    <input type="email" id="email" placeholder="Your email" />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="message">Message</label>
-                    <textarea id="message" rows="5" placeholder="Your eco-thoughts"></textarea>
-                  </div>
-                  <button type="submit" className="eco-button">
-                    <RecycleIcon /> Send Message
-                  </button>
-                </form>
-              </div>
+                  <form className="contact-form" onSubmit={handleSubmit}>
+                    <div className="form-group">
+                      <label htmlFor="name">Name</label>
+                      <input type="text" id="name" placeholder="Your name" required />
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="email">Email</label>
+                      <input type="email" id="email" placeholder="Your email" required />
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="message">Message</label>
+                      <textarea id="message" rows="5" placeholder="Your thoughts" required></textarea>
+                    </div>
+                    <button type="submit" className="eco-button">
+                      Send Message
+                    </button>
+                  </form>
+                </div>
+              )}
             </div>
           </section>
         )}
