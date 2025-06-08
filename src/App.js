@@ -1,4 +1,4 @@
-import { useState, useEffect , useRef} from 'react';
+import { useState, useRef } from 'react';
 import './App.css';
 
 import grannyImage from './images/granny.png';
@@ -16,19 +16,14 @@ import piece1 from './images/piece1.jpg';
 import theArchOfTime from './images/THEARCHOFTIIME.jpg';
 import whoKni from './images/WHOKNI.jpg';
 
-
 export default function GreenMuseum() {
-  const [currentImage, setCurrentImage] = useState(0);
-  const [isGrowing, setIsGrowing] = useState(false);
   const [activeSection, setActiveSection] = useState('gallery');
-  const galleryRef = useRef(null); // Ref for scrolling to gallery
+  const galleryRef = useRef(null);
   const [showComingSoon, setShowComingSoon] = useState(false);
-
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Your eco-themed artwork
   const artwork = [
-    
     { 
       id: 1, 
       title: "Grans", 
@@ -129,51 +124,15 @@ export default function GreenMuseum() {
     }
   ];
 
-  // Organic gallery rotation
-  useEffect(() => {
-    if (activeSection === 'gallery') {
-      const interval = setInterval(() => {
-        setIsGrowing(true);
-        setTimeout(() => {
-          setCurrentImage((prev) => (prev + 1) % artwork.length);
-          setIsGrowing(false);
-        }, 2000);
-      }, 20000);
-      return () => clearInterval(interval);
-    }
-  }, [artwork.length, activeSection]);
-
-    const handleNavClick = (section) => {
+  const handleNavClick = (section) => {
     setActiveSection(section);
-    setIsMobileMenuOpen(false); // Close mobile menu when navigating
-  };
-  // Handle art card click: set image and scroll to gallery
-  const handleArtCardClick = (index) => {
-    setIsGrowing(true);
-    setTimeout(() => {
-      setCurrentImage(index);
-      setIsGrowing(false);
-      
-      // Switch to gallery if not already there
-      if (activeSection !== 'gallery') {
-        setActiveSection('gallery');
-      }
-      
-      // Scroll to gallery with smooth animation
-      setTimeout(() => {
-        galleryRef.current?.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }, 100);
-    }, 300);
+    setIsMobileMenuOpen(false);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setShowComingSoon(true);
     
-    // Hide the message after 3 seconds
     setTimeout(() => {
       setShowComingSoon(false);
     }, 3000);
@@ -183,10 +142,9 @@ export default function GreenMuseum() {
     <div className="green-museum">
       <header className="museum-header">
         <div className="logo">
-          <LeafIcon />
+          
           <h1>Green Museum</h1>
         </div>
-        {/* Mobile menu toggle button */}
         <button 
           className="mobile-menu-toggle" 
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -219,67 +177,49 @@ export default function GreenMuseum() {
 
       <main>
         {activeSection === 'gallery' && (
-          <>
-            <section className="organic-gallery" ref={galleryRef}>
-              <div className={`gallery-container ${isGrowing ? 'growing' : ''}`}>
-                <div className="image-wrapper">
-                  <img 
-                    src={artwork[currentImage].image} 
-                    alt={artwork[currentImage].title}
-                    loading="lazy"
-                    className="organic-image"
-                  />
-                </div>
-                <div className="vine-animation"></div>
-              </div>
-              <div className="gallery-info">
-                <h2 className="art-title">{artwork[currentImage].title}</h2>
-                <p className="art-category">{artwork[currentImage].category}</p>
-                <p className="art-description">{artwork[currentImage].description}</p>
-              </div>
-            </section>
-            <section className="art-grid">
-              {artwork.map((art, index) => (
-                <div 
-                  key={art.id} 
-                  className={`art-card ${index === currentImage ? 'active' : ''}`}
-                  onClick={() => handleArtCardClick(index)}
-                >
-                  <div className="card-overlay"></div>
-                  <img
-                    src={art.image}
-                    alt={art.title}
-                    loading="lazy"
-                  />
-                  <div className="card-info">
-                    <h3>{art.title}</h3>
-                    <p>{art.category}</p>
+          <section className="vertical-gallery" ref={galleryRef}>
+            {artwork.map((art, index) => (
+              <div key={art.id} className="gallery-post">
+                <div className="gallery-container">
+                  <div className="image-wrapper">
+                    <img 
+                      src={art.image} 
+                      alt={art.title}
+                      loading="lazy"
+                      className="organic-image"
+                    />
                   </div>
+                  <div className="vine-animation"></div>
                 </div>
-              ))}
-            </section>
-          </>
+                <div className="gallery-info">
+                  <h2 className="art-title">{art.title}</h2>
+                  <p className="art-category">{art.category}</p>
+                  <p className="art-description">{art.description}</p>
+                </div>
+              </div>
+            ))}
+          </section>
         )}
 
         {activeSection === 'about' && (
-  <section className="about-section">
-    <div className="about-content">
-      <h2>
-        We are Green Museum — a living canvas, a shared altar for modern expression.
+          <section className="about-section">
+            <div className="about-content">
+              <h2>
+                We are Green Museum — a living canvas, a shared altar for modern expression.
 
-This is more than a gallery. It’s a space where soul meets form, where brushstrokes carry stories, and where light, color, and texture speak what words cannot. We gather the visions of many — artists from different paths, backgrounds, and rhythms — into one collective heartbeat of modern art.
+                This is more than a gallery. It's a space where soul meets form, where brushstrokes carry stories, and where light, color, and texture speak what words cannot. We gather the visions of many — artists from different paths, backgrounds, and rhythms — into one collective heartbeat of modern art.
 
-Here, we believe creation is sacred. Every piece is a portal. Every artist, a vessel. Whether it's bold, quiet, wild, or still — if it speaks truth, it belongs.
+                Here, we believe creation is sacred. Every piece is a portal. Every artist, a vessel. Whether it's bold, quiet, wild, or still — if it speaks truth, it belongs.
 
-We are here to hold space for that truth.
-To uplift. To connect. To remember beauty in all its raw, evolving shapes.
+                We are here to hold space for that truth.
+                To uplift. To connect. To remember beauty in all its raw, evolving shapes.
 
-Wander through. Feel what calls you.
-This is a place for seekers, for creators, for anyone listening with their eyes open.
-      </h2>
-    </div>
-  </section>
-)}
+                Wander through. Feel what calls you.
+                This is a place for seekers, for creators, for anyone listening with their eyes open.
+              </h2>
+            </div>
+          </section>
+        )}
 
         {activeSection === 'contact' && (
           <section className="contact-section">
@@ -338,7 +278,6 @@ This is a place for seekers, for creators, for anyone listening with their eyes 
           </a>
         </p>
       </footer>
-
     </div>
   );
 }
@@ -352,13 +291,6 @@ function LeafIcon() {
   );
 }
 
-function RecycleIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24">
-      <path d="M5 6h14l-1.6 4H6.6zm13 12c0 1.1-.9 2-2 2H8c-1.1 0-2-.9-2-2v-5h12zm2-14l-3-4H7L4 4H1v2h3l1.6 4h12.8L20 6h3V4z" fill="#8BC34A"/>
-    </svg>
-  );
-}
 function HamburgerIcon() {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
