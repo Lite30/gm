@@ -1,20 +1,20 @@
 import { useState, useRef } from 'react';
 import './App.css';
 
-import grannyImage from './images/granny.png';
-import lImage from './images/l.png';
-import firstSightImage from './images/first sight.png';
-import asset1Jpg from './images/Asset 1xxxhdpi.jpg';
-import asset1Png from './images/Asset 1xxxhdpi.png';
-import facey2 from './images/facey2.jpg';
-import faceyRed from './images/FACEYRED.jpg';
-import grandpa from './images/grandpa.jpg';
-import moonsat from './images/moonsat.jpg';
-import newWay from './images/new way.jpg';
-import notAuthentic from './images/not authentic.png';
-import piece1 from './images/piece1.jpg';
-import theArchOfTime from './images/THEARCHOFTIIME.jpg';
-import whoKni from './images/WHOKNI.jpg';
+const grannyImage = 'https://res.cloudinary.com/dwwu0r9de/image/upload/v1749495285/granny_f5vuij.webp';
+const lImage = 'https://res.cloudinary.com/dwwu0r9de/image/upload/v1749495286/l_gttq2v.webp';
+const firstSightImage = 'https://res.cloudinary.com/dwwu0r9de/image/upload/v1749495285/first_sight_spwbhw.webp';
+const asset1Jpg = 'https://res.cloudinary.com/dwwu0r9de/image/upload/v1749495285/Asset_1xxxhdpi_dgv01r.webp';
+const asset1Png = 'https://res.cloudinary.com/dwwu0r9de/image/upload/v1749495287/gunji_bterfr.webp';
+const facey2 = 'https://res.cloudinary.com/dwwu0r9de/image/upload/v1749495285/facey2_ybjxso.webp';
+const faceyRed = 'https://res.cloudinary.com/dwwu0r9de/image/upload/v1749495284/FACEYRED_mzx4zz.webp';
+const grandpa = 'https://res.cloudinary.com/dwwu0r9de/image/upload/v1749495284/grandpa_omxhqp.webp';
+const moonsat = 'https://res.cloudinary.com/dwwu0r9de/image/upload/v1749495285/moonsat_k8hsrw.webp';
+const newWay = 'https://res.cloudinary.com/dwwu0r9de/image/upload/v1749495287/new_way_cvs9gv.webp';
+const notAuthentic = 'https://res.cloudinary.com/dwwu0r9de/image/upload/v1749495286/not_authentic_d0r9eb.webp';
+const piece1 = 'https://res.cloudinary.com/dwwu0r9de/image/upload/v1749495287/piece1_yirxfy.webp';
+const theArchOfTime = 'https://res.cloudinary.com/dwwu0r9de/image/upload/v1749495286/THEARCHOFTIIME_kqcjtj.webp';
+const whoKni = 'https://res.cloudinary.com/dwwu0r9de/image/upload/v1749495287/WHOKNI_s9e07q.webp';
 
 export default function GreenMuseum() {
   const [activeSection, setActiveSection] = useState('gallery');
@@ -25,101 +25,101 @@ export default function GreenMuseum() {
 
   // Your eco-themed artwork
   const artwork = [
-    { 
-      id: 1, 
-      title: "Grans", 
-      category: "Liteboho Maseli", 
+    {
+      id: 1,
+      title: "Grans",
+      category: "Liteboho Maseli",
       image: grannyImage,
       description: "Beauty of GRANS blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah, i dont know what to say"
     },
-    { 
-      id: 2, 
-      title: "Skeleton Soul", 
-      category: "Liteboho Maseli", 
+    {
+      id: 2,
+      title: "Skeleton Soul",
+      category: "Liteboho Maseli",
       image: lImage,
       description: "Majestic peaks rendered with sustainable digital techniques, reminding us of nature's enduring power and beauty."
     },
-    { 
-      id: 3, 
-      title: "Skulpture", 
-      category: "Liteboho Maseli", 
+    {
+      id: 3,
+      title: "Skulpture",
+      category: "Liteboho Maseli",
       image: firstSightImage,
-      description: "MEAN FACE.MEAN FACEMEAN FACE.MEAN FACEMEAN FACE.MEAN FACEMEAN FACE.MEAN FACEMEAN FACE.MEAN FACEMEAN FACE.MEAN FACEMEAN FACE.MEAN FACEMEAN FACE.MEAN FACEMEAN FACE.MEAN FACE"
+      description: "MEAN FACE.MEAN FACEMEAN FACE.MEAN FACEMEAN FACE.MEAN FACEMEAN FACE.MEAN FACEMEAN FACE.MEAN FACEMEAN FACE.MEAN FACEMEAN FACE.MEAN FACEMEAN FACE.MEAN FACEMEAN FACE.MEAN FACEu"
     },
-    { 
-      id: 4, 
-      title: "Asset 1", 
-      category: "Liteboho Maseli", 
+    {
+      id: 4,
+      title: "Asset 1",
+      category: "Liteboho Maseli",
       image: asset1Jpg,
       description: "An abstract representation of ecological balance using geometric patterns and vibrant colors."
     },
-    { 
-      id: 5, 
-      title: "Asset 1 Variation", 
-      category: "Liteboho Maseli", 
+    {
+      id: 5,
+      title: "Asset 1 Variation",
+      category: "Liteboho Maseli",
       image: asset1Png,
       description: "Digital reinterpretation of natural forms exploring the relationship between technology and ecology."
     },
-    { 
-      id: 6, 
-      title: "Facey", 
-      category: "Liteboho Maseli", 
+    {
+      id: 6,
+      title: "Facey",
+      category: "Liteboho Maseli",
       image: facey2,
       description: "Portrait study capturing human connection with nature through expressive brushwork."
     },
-    { 
-      id: 7, 
-      title: "Red Portrait", 
-      category: "Liteboho Maseli", 
+    {
+      id: 7,
+      title: "Red Portrait",
+      category: "Liteboho Maseli",
       image: faceyRed,
       description: "Bold chromatic exploration of identity and environmental consciousness."
     },
-    { 
-      id: 8, 
-      title: "Grandpa", 
-      category: "Liteboho Maseli", 
+    {
+      id: 8,
+      title: "Grandpa",
+      category: "Liteboho Maseli",
       image: grandpa,
       description: "Intergenerational wisdom and the passing down of ecological stewardship traditions."
     },
-    { 
-      id: 9, 
-      title: "Moon Satellite", 
-      category: "Liteboho Maseli", 
+    {
+      id: 9,
+      title: "Moon Satellite",
+      category: "Liteboho Maseli",
       image: moonsat,
       description: "Celestial exploration piece examining humanity's place in the cosmic ecosystem."
     },
-    { 
-      id: 10, 
-      title: "New Way", 
-      category: "Liteboho Maseli", 
+    {
+      id: 10,
+      title: "New Way",
+      category: "Liteboho Maseli",
       image: newWay,
       description: "Visionary approach to sustainable living through innovative design principles."
     },
-    { 
-      id: 11, 
-      title: "Authenticity", 
-      category: "Liteboho Maseli", 
+    {
+      id: 11,
+      title: "Authenticity",
+      category: "Liteboho Maseli",
       image: notAuthentic,
       description: "Critical examination of genuine versus artificial in contemporary environmental discourse."
     },
-    { 
-      id: 12, 
-      title: "Fragment", 
-      category: "Liteboho Maseli", 
+    {
+      id: 12,
+      title: "Fragment",
+      category: "Liteboho Maseli",
       image: piece1,
       description: "Deconstructed landscape highlighting the fragmentation of natural habitats."
     },
-    { 
-      id: 13, 
-      title: "Arch of Time", 
-      category: "Liteboho Maseli", 
+    {
+      id: 13,
+      title: "Arch of Time",
+      category: "Liteboho Maseli",
       image: theArchOfTime,
       description: "Geological time scales represented through monumental digital architecture."
     },
-    { 
-      id: 14, 
-      title: "Unknown Connections", 
-      category: "Liteboho Maseli", 
+    {
+      id: 14,
+      title: "Unknown Connections",
+      category: "Liteboho Maseli",
       image: whoKni,
       description: "Exploration of invisible ecological networks that sustain life on Earth."
     }
@@ -141,7 +141,7 @@ export default function GreenMuseum() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setShowComingSoon(true);
-    
+
     setTimeout(() => {
       setShowComingSoon(false);
     }, 3000);
@@ -153,8 +153,8 @@ export default function GreenMuseum() {
         <div className="logo">
           <h1>Green Museum</h1>
         </div>
-        <button 
-          className="mobile-menu-toggle" 
+        <button
+          className="mobile-menu-toggle"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
         >
@@ -162,19 +162,19 @@ export default function GreenMuseum() {
         </button>
 
         <nav className={`${isMobileMenuOpen ? 'open' : ''}`}>
-          <button 
+          <button
             className={`nav-link ${activeSection === 'gallery' ? 'active' : ''}`}
             onClick={() => handleNavClick('gallery')}
           >
             Gallery
           </button>
-          <button 
+          <button
             className={`nav-link ${activeSection === 'about' ? 'active' : ''}`}
             onClick={() => handleNavClick('about')}
           >
             About
           </button>
-          <button 
+          <button
             className={`nav-link ${activeSection === 'contact' ? 'active' : ''}`}
             onClick={() => handleNavClick('contact')}
           >
@@ -190,8 +190,8 @@ export default function GreenMuseum() {
               <div key={art.id} className="gallery-post">
                 <div className="gallery-container">
                   <div className="image-wrapper">
-                    <img 
-                      src={art.image} 
+                    <img
+                      src={art.image}
                       alt={art.title}
                       loading="lazy"
                       className="organic-image"
@@ -281,8 +281,8 @@ export default function GreenMuseum() {
             <button className="modal-close" onClick={closeModal}>
               <CloseIcon />
             </button>
-            <img 
-              src={selectedImage.image} 
+            <img
+              src={selectedImage.image}
               alt={selectedImage.title}
               className="modal-image"
             />
@@ -316,7 +316,7 @@ export default function GreenMuseum() {
 function LeafIcon() {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24">
-      <path d="M17 8C8 10 5.9 16.8 4 18c3 0 5-1 7-3 3 3 6 4 9 2-2-5 .5-11-6-12-3 0-5 1-7 3-1-1-3-3-5-2 5 4 7 8 3 14z" fill="#4CAF50"/>
+      <path d="M17 8C8 10 5.9 16.8 4 18c3 0 5-1 7-3 3 3 6 4 9 2-2-5 .5-11-6-12-3 0-5 1-7 3-1-1-3-3-5-2 5 4 7 8 3 14z" fill="#4CAF50" />
     </svg>
   );
 }
